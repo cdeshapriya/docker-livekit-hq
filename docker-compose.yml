@@ -4,7 +4,7 @@ services:
     image: hq-server
     build: .
     ports:
-      - "127.0.0.1:2567:2567"
+      - "2567:2567"
     environment:
       - "LIVEKIT_API_KEY=${LIVEKIT_API_KEY}"
       - "LIVEKIT_API_SECRET=${LIVEKIT_API_SECRET}"
@@ -16,6 +16,14 @@ services:
       context: .
       dockerfile: Dockerfile.client
     ports:
-      - "127.0.0.1:3000:80"
+      - "3000:80"
     environment:
       - "REACT_APP_SERVER_URL=${REACT_APP_SERVER_URL}"
+ 
+ ngrok:
+    image: wernight/ngrok
+    volumes:
+      - ./ngrok.yml:/home/ngrok/.ngrok2/ngrok.yml
+    ports:
+      - "4040:4040"
+    command: ["ngrok", "http", "hq-client:80", "--host-header=localhost:3000"]
