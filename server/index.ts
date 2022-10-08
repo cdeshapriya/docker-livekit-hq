@@ -1,4 +1,5 @@
 import http from 'http'
+import https from 'https'
 import express from 'express'
 import cors from 'cors'
 import { Server, LobbyRoom } from 'colyseus'
@@ -72,4 +73,4 @@ app.post('/token', (req: any, res: any) => {
 })
 
 gameServer.listen(port)
-console.log(`Listening on ws://localhost:${port}`)
+console.log(`Listening on wss://localhost:${port}`)

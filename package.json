@@ -4,7 +4,7 @@
   "description": "Server for SkyOffice",
   "main": ".eslintrc.js",
   "scripts": {
-    "start": "cd server && ts-node-dev --project tsconfig.server.json --respawn --transpile-only index.ts",
+    "start": "cd server && export HTTPS=true&&SSL_CRT_FILE=cert.pem&&SSL_KEY_FILE=key.pem&&ts-node-dev --project tsconfig.server.json --respawn --transpile-only index.ts",
     "heroku-postbuild": "npm i && cd types && npm i && cd ../server && tsc --project tsconfig.server.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,7 +31,9 @@
     "rimraf": "^2.7.1",
     "ts-node": "^8.1.0",
     "ts-node-dev": "^1.0.0-pre.63",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
     "@colyseus/arena": "^0.14.9",
@@ -46,6 +48,7 @@
     "livekit-server-sdk": "^0.5.8",
     "phaser": "^3.55.2",
     "regenerator-runtime": "^0.13.7",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "webpack": "^5.74.0"
   }
 }

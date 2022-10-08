@@ -6,3 +6,9 @@ node_modules
 /server/lib
 .env
 .git
+docker-compose.yml
+docker-compose.yml.ngrok
+docker-compose.yml.swag
+ngrok.yml
+appdata
+config`
