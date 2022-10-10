@@ -54,13 +54,15 @@ services:
       - "TWILIO_API_KEY_SID=${TWILIO_API_KEY_SID}"
       - "TWILIO_API_KEY_SECRET=${TWILIO_API_KEY_SECRET}"
       - "TWILIO_CONVERSATIONS_SERVICE_SID=${TWILIO_CONVERSATIONS_SERVICE_SID}"
-      - "REACT_APP_TOKEN_ENDPOINT=${REACT_APP_TOKEN_ENDPOINT}"
-      - "DANGEROUSLY_DISABLE_HOST_CHECK=true"
     restart: always
-    ports:
-      - "3000:3000"
-      - "1081:1081"
-    
+    networks:
+      - gateway
+
+  twilio-react:
+    image: twilio-react
+    environment:
+      - "REACT_APP_TOKEN_ENDPOINT=${REACT_APP_TOKEN_ENDPOINT}"
+    restart: always
     networks:
       - gateway
 
